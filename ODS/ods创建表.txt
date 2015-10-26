@@ -1,0 +1,70 @@
+
+
+
+1.
+create table  ODS_BUS_CAMPAIGN_FEEDBACK_D 
+(
+     acct_month     string    comment    'acct_month',
+     day_id         string    comment    'day_id',
+     campaignid     string    comment    'campaignid',
+     msisdn         string    comment    'msisdn',
+     product_id     string    comment    'product_id',
+     result         string    comment    'result',
+     contacttime    string    comment    'contacttime',
+     channel_type   string    comment    'channel_type',
+     sex            string    comment    'sex',
+     age            int       comment    'age',
+     reason         string    comment    'reason'
+)
+comment  'ODS_BUS_CAMPAIGN_FEEDBACK_D'
+partitioned by (MONTH_PART STRING COMMENT '月份分区',
+DAY_PART STRING COMMENT  '日期分区')
+row format delimited  fields  terminated by '\001'
+stored  as  rcfile;
+2.
+create table  ODS_BUS_MAINTENANCE_RTN_D
+(
+            ACCT_MONTH	            string,
+	      DAY_ID	 	            string,
+	      ID		            string,
+	      ORDER_ID	            string,
+	      TASK_ID		            string,
+		CIRCUIT_NO		      string,
+		CIRCUIT_NOTES	 	      string,
+		USERIP_R	 	      string,
+		LINKIP_CNC_R	  	      string,
+		LINKIP_CUST_R	 	      string,
+		LINKIP_CUST_NR	      string,
+		USERIP_NR	            string,
+		PRIMARY_DEP	            string,
+		SECOND_DEP	            string,
+		DESIGN_MAN		      string,
+		DESIGN_TIME             string,
+		STATE		            string,
+		CREATE_DATE		      string,
+		REMARKS		      string,
+		ORDER_CIRCUIT_ID	      string,
+		CIRCUIT_COMPLETE_TIME	string,
+		BILLING_NUMBER		string
+		E1_NUMBER_DESC		string,
+		CONSTRUCT_CONTACT_MAN	string,
+ 		CONSTRUCT_CONTACT_TEL	string
+)
+comment  'ODS_BUS_MAINTENANCE_RTN_D'
+partitioned by (
+MONTH_PART  STRING COMMENT '月份分区',
+DAY_PART    STRING COMMENT  '日期分区'
+)
+row format delimited  fields  terminated by '\001'
+stored  as  rcfile;
+
+
+
+
+
+
+
+
+
+
+

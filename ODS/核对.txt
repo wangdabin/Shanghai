@@ -1,0 +1,2 @@
+核对日表数据：
+/data/disk4/sh_test_data/day_201507/day_20150719

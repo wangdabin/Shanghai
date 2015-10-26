@@ -1,0 +1,14 @@
+hive -e "use src;
+CREATE TABLE CHANNEL_RELATION(
+CHANNEL_ID                STRING,
+AREA_ID                   STRING,
+COUNTY_ID                 STRING,
+DEPT_ID                   STRING,
+CHNL_CODE                 STRING,
+CITY_CODE                 STRING,
+MANAGER_AREA_CODE         STRING,
+MANAGER_DEPT_CODE         STRING
+)
+COMMENT '渠道转换关系'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS TEXTFILE;"

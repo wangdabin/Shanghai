@@ -1,0 +1,13 @@
+hive -e "use src;
+CREATE TABLE BUSINESS_AREA(  
+BUSINESS_AREA_ID           STRING COMMENT 'BUSINESS_AREA_ID',       
+NAME                       STRING COMMENT 'NAME',                   
+ORGANIZE_ID                STRING COMMENT 'ORGANIZE_ID',            
+PARENT_BUSINESS_AREA_ID    STRING COMMENT 'PARENT_BUSINESS_AREA_ID',
+STATE                      STRING COMMENT 'STATE',                  
+REMARKS                    STRING COMMENT 'REMARKS',                
+COUNTYID                   STRING COMMENT 'COUNTYID'                
+)
+COMMENT 'ÒµÎñÇøÓò'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS TEXTFILE;"

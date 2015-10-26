@@ -1,0 +1,213 @@
+1.P_ODS_BUS_CAMPAIGN_FEEDBACK_D_SQL         营业域         SRC.SH_BMS_CAMPAIGN_FEEDBACK
+
+    ods统计条数：select count(*) from ODS_BUS_CAMPAIGN_FEEDBACK_D;        1708379
+    src统计条数：select count(*) from SH_BMS_CAMPAIGN_FEEDBACK;           1708379
+              
+    ods查询前10条：select * from ODS_BUS_CAMPAIGN_FEEDBACK_D limit 10;
+    src查询前10条：select * from SH_BMS_CAMPAIGN_FEEDBACK limit 10;
+
+     
+2.P_ODS_BUS_MAINTENANCE_RTN_D_SQL         营业域         SRC.D_MAINTENANCE_ORDER_RTN
+
+   ods统计条数：select count(*) from ODS_BUS_MAINTENANCE_RTN_D;               294706
+   src统计条数：select count(*) from D_MAINTENANCE_ORDER_RTN;               294706
+   ods查询前10条：select * from ODS_BUS_MAINTENANCE_RTN_D limit 10;
+   src查询前10条： select * from D_MAINTENANCE_ORDER_RTN limit 10;
+
+
+3.P_ODS_BUS_ORDER_RES_RELA_D_SQL          营业域         SRC.D_BILLING_ORDER_RES_RELAT
+
+
+    ods统计条数：select count(*) from ODS_BUS_ORDER_RES_RELA_D;      273436
+    src统计条数：select count(*) from D_BILLING_ORDER_RES_RELAT;     273436
+              
+    ods查询前10条：select * from ODS_BUS_ORDER_RES_RELA_D limit 10;
+    src查询前10条：select * from D_BILLING_ORDER_RES_RELAT limit 10;
+
+
+4.P_ODS_BUS_SERVICE_CIRCUIT_D_SQL         营业域         SRC.D_OMS_SERVICE_CIRCUIT_INFO
+
+
+    ods统计条数：select count(*) from ODS_BUS_SERVICE_CIRCUIT_D;      1126752 
+    src统计条数： select count(*) from D_OMS_SERVICE_CIRCUIT_INFO;     1126752
+              
+    ods查询前10条：select * from ODS_BUS_SERVICE_CIRCUIT_D limit 10;
+    src查询前10条：select * from D_OMS_SERVICE_CIRCUIT_INFO limit 10;
+
+
+5.P_ODS_BUS_SO_SERVICE_ORDER_D_SQL        营业域         SRC.SO_SERVICE_ORDER
+
+
+    ods统计条数：select count(*) from ODS_BUS_SO_SERVICE_ORDER_D;        25512689      
+    src统计条数：select count(*) from SO_SERVICE_ORDER;                25512689
+              
+    ods查询前10条：select * from ODS_BUS_SO_SERVICE_ORDER_D limit 10;
+    src查询前10条：select * from SO_SERVICE_ORDER limit 10;
+
+
+6.P_ODS_CDR_OCS_SMS_D_SQL                 详单域         SRC.DR_OCS_SMS
+
+
+    ods统计条数：select count(*) from ODS_CDR_OCS_SMS_D;               980236
+    src统计条数：select count(*) from DR_OCS_SMS;                    980236
+              
+    ods查询前10条：select * from ODS_CDR_OCS_SMS_D limit 10;
+    src查询前10条：select * from DR_OCS_SMS limit 10;
+
+7.P_ODS_CDR_OCS_VAS_D_SQL                 详单域         SRC.DR_OCS_VAS
+
+    
+    ods统计条数：select count(*) from ODS_CDR_OCS_VAS_D;            874774
+    src统计条数：select count(*) from DR_OCS_VAS;                 874774
+              
+    ods查询前10条：select * from ODS_CDR_OCS_VAS_D limit 2;
+    src查询前10条： select * from DR_OCS_VAS limit 2;
+
+
+8.P_ODS_CHL_PAY_TRANSACTION_D_SQL         渠道域         SRC.TAB_PAY_TRANSACTION
+
+
+    ods统计条数：select count(*) from ODS_CHL_PAY_TRANSACTION_D;       162655
+    src统计条数：select count(*) from TAB_PAY_TRANSACTION;             162655
+              
+    ods查询前10条：select * from ODS_CHL_PAY_TRANSACTION_D limit 10;
+    src查询前10条： select * from TAB_PAY_TRANSACTION limit 10;
+
+
+9.P_ODS_CHL_ZB_AGENT_DEV_AREA_M_SQL       渠道域         SRC.ZB_AGENT_CHANNEL_DEV_AREA
+
+
+    ods统计条数：select count(*) from ODS_CHL_ZB_AGENT_DEV_AREA_M;          310065
+    src统计条数：select count(*) from ZB_AGENT_CHANNEL_DEV_AREA;        310065
+              
+    ods查询前10条：select * from ODS_CHL_ZB_AGENT_DEV_AREA_M limit 10;
+    src查询前10条：select * from ZB_AGENT_CHANNEL_DEV_AREA limit 10;
+
+
+10.P_ODS_CUS_UCS_GROUP_D_SQL              客户域         SRC.UCS_GROUP
+
+    ods统计条数： select count(*) from ODS_CUS_UCS_GROUP_D;           514520   
+    src统计条数：select count(*) from UCS_GROUP;                     514520
+              
+    ods查询前10条：select * from ODS_CUS_UCS_GROUP_D limit 10;
+    src查询前10条：select * from UCS_GROUP limit 10;
+
+11.P_ODS_PRD_LARGE_TEXT_RECORD_D_SQL      产品域         SRC.SO_LARGE_TEXT_RECORD
+
+    ods统计条数：select count(*) from ODS_PRD_LARGE_TEXT_RECORD_D;       2463769
+    src统计条数：select count(*) from SO_LARGE_TEXT_RECORD;            2463769
+              
+    ods查询前10条：select * from ODS_PRD_LARGE_TEXT_RECORD_D limit 10;
+    src查询前10条：select * from SO_LARGE_TEXT_RECORD limit 10;
+
+12.P_ODS_PRD_PM_SCHEME_LABEL_D_SQL        产品域         SRC.PM_SCHEME_LABEL
+
+    ods统计条数：select count(*) from ODS_PRD_PM_SCHEME_LABEL_D;       184020
+    src统计条数：select count(*) from PM_SCHEME_LABEL;                184020
+              
+    ods查询前10条： select * from ODS_PRD_PM_SCHEME_LABEL_D limit 10;
+    src查询前10条：select * from PM_SCHEME_LABEL limit 10;
+
+13.P_ODS_PUB_ADDR_D_SQL                   公共域         SRC.ADDR   
+
+    ods统计条数：select count(*) from ODS_PUB_ADDR_D;            1736217
+    src统计条数：select count(*) from ADDR ;                    1736217
+              
+    ods查询前10条：select * from ODS_PUB_ADDR_D limit 10;
+    src查询前10条：select * from ADDR limit 10;
+
+
+14.P_ODS_RES_NUMBER_ORDER_D_SQL           资源域         SRC.RES_NUMBER_ORDER
+
+    ods统计条数：select count(*) from ODS_RES_NUMBER_ORDER_D;       1674669
+    src统计条数：select count(*) from RES_NUMBER_ORDER;           1674669
+              
+    ods查询前10条：select * from ODS_RES_NUMBER_ORDER_D limit 10;
+    src查询前10条：select * from RES_NUMBER_ORDER limit 10;
+
+15.P_ODS_USR_CBSS_B2CUSER_D_SQL           用户域         SRC.CBSS_B2CUSER
+
+
+    ods统计条数： select count(*) from ODS_USR_CBSS_B2CUSER_D;    745165
+    src统计条数：select count(*) from CBSS_B2CUSER;           745165
+              
+    ods查询前10条：select * from ODS_USR_CBSS_B2CUSER_D limit 10;
+    src查询前10条：select * from CBSS_B2CUSER  limit 10;
+
+16.P_ODS_USR_GRP_SUBS_IND_REL_D_SQL       用户域         SRC.GRP_SUBS_IND_REL
+
+
+    ods统计条数：select count(*) from ODS_USR_GRP_SUBS_IND_REL_D;         597318  
+    src统计条数：select count(*) from GRP_SUBS_IND_REL;                  597318
+              
+    ods查询前10条：select * from ODS_USR_GRP_SUBS_IND_REL_D limit 10;
+    src查询前10条：select * from GRP_SUBS_IND_REL limit 10;
+
+
+
+17.P_ODS_USR_INSTANCE_EXTEND_D_SQL        用户域         SRC.PRODUCT_INSTANCE_EXTEND
+
+    
+    ods统计条数：select count(*) from ODS_USR_INSTANCE_EXTEND_D;          1243074
+    src统计条数：select count(*) from PRODUCT_INSTANCE_EXTEND;            1243074
+              
+    ods查询前10条：select * from ODS_USR_INSTANCE_EXTEND_D limit 10;
+    src查询前10条：select * from PRODUCT_INSTANCE_EXTEND limit 10;
+
+18.P_ODS_USR_UCS_SUBS_OBJECT_D_SQL        用户域         SRC.UCS_SUBS_OBJECT
+
+
+    ods统计条数：select count(*) from ODS_USR_UCS_SUBS_OBJECT_D;       367907
+    src统计条数：select count(*) from UCS_SUBS_OBJECT;                 367907
+              
+    ods查询前10条：select * from ODS_USR_UCS_SUBS_OBJECT_D limit 10;
+    src查询前10条：select * from UCS_SUBS_OBJECT;
+
+
+19.P_ODS_USR_UCS_SUBS_RELA_D_SQL          用户域         SRC.UCS_SUBS_RELA
+
+    ods统计条数：select count(*) from ODS_USR_UCS_SUBS_RELA_D;        232623         (有问题)
+    src统计条数：select count(*) from UCS_SUBS_RELA;                 232623
+              
+    ods查询前10条：select * from ODS_USR_UCS_SUBS_RELA_D limit 10;
+    src查询前10条：select * from UCS_SUBS_RELA limit 10;
+
+
+20.P_ODS_BUS_EXPBILL_RENT_D_SQL           营业域         SRC.EXPBILL_RENT
+
+                                                        
+    ods统计条数： select count(*) from ODS_BUS_EXPBILL_RENT_D;       0
+    src统计条数：select count(*) from EXPBILL_RENT;         （没有这张表）
+              
+    ods查询前10条：select * from ODS_BUS_EXPBILL_RENT_D limit 10;
+    src查询前10条：select * from EXPBILL_RENT limit 10;
+
+
+21.P_ODS_PUB_TRAFFIC_D_SQL                公共域         SRC.SH_TRAFFIC_TRANSFER
+
+    ods统计条数：select count(*) from ODS_PUB_TRAFFIC_D;      0
+    src统计条数：    select count(*) from SH_TRAFFIC_TRANSFER;    （没有这张表）
+
+              
+    ods查询前10条： select * from ODS_PUB_TRAFFIC_D limit 10;
+    src查询前10条：select * from SH_TRAFFIC_TRANSFER limit 10;
+
+
+
+
+22.P_ODS_BMS_GROUP_CERT_INFO_D_SQL        其它域         SRC.BMS_GROUP_CERT_INFO
+
+    ods统计条数：select count(*) from ODS_BMS_GROUP_CERT_INFO_D;       183404
+    src统计条数：select count(*) from BMS_GROUP_CERT_INFO;             183404
+              
+    ods查询前10条：select * from ODS_BMS_GROUP_CERT_INFO_D limit 10;
+    src查询前10条：select * from BMS_GROUP_CERT_INFO limit 10;
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+CREATE TABLE ODS_RES_CARD_PARAM_TYPE_D(
+ACCT_MONTH                  STRING COMMENT 'ACCT_MONTH',               
+DAY_ID                      STRING COMMENT 'DAY_ID',                   
+CARD_KIND                   STRING COMMENT 'CARD_KIND',                
+CARD_TYPE                   STRING COMMENT 'CARD_TYPE',                
+CARD_NAME                   STRING COMMENT 'CARD_NAME',                
+CAN_CHANGE_EXP_DATE         STRING COMMENT 'CAN_CHANGE_EXP_DATE',      
+MAX_CHANGE_EXP_DATE_TIMES   STRING COMMENT 'MAX_CHANGE_EXP_DATE_TIMES',
+MAX_CHANGE_EXP_DATE_DAYS    STRING COMMENT 'MAX_CHANGE_EXP_DATE_DAYS', 
+CARD_ID_LENGTH              STRING COMMENT 'CARD_ID_LENGTH',           
+CARD_PREFIX_LENGTH          STRING COMMENT 'CARD_PREFIX_LENGTH',       
+SEQUENCE                    STRING COMMENT 'SEQUENCE',                 
+SCOPESTART                  STRING COMMENT 'SCOPESTART',               
+SCOPEEND                    STRING COMMENT 'SCOPEEND',                 
+HASVALUE                    STRING COMMENT 'HASVALUE',                 
+HASDATE                     STRING COMMENT 'HASDATE',                  
+CAN_SELL                    STRING COMMENT 'CAN_SELL',                 
+INTERFACE_CAN_SELL          STRING COMMENT 'INTERFACE_CAN_SELL',       
+CAN_DISCOUNT                STRING COMMENT 'CAN_DISCOUNT',             
+CARD_CAPACITY               STRING COMMENT 'CARD_CAPACITY',            
+ACTIVE_PLAT                 STRING COMMENT 'ACTIVE_PLAT',              
+CARD_FROM                   STRING COMMENT 'CARD_FROM',                
+IS_PRE_INPUT                STRING COMMENT 'IS_PRE_INPUT',             
+INSERT_DATE                 STRING COMMENT 'INSERT_DATE'               
+
+)
+COMMENT ''
+PARTITIONED BY (MONTH_PART STRING COMMENT '月份分区',
+DAY_PART STRING COMMENT '日期分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;

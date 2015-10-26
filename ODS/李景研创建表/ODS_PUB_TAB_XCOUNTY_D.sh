@@ -1,0 +1,13 @@
+CREATE TABLE ODS_PUB_TAB_XCOUNTY_D(
+ACCT_MONTH      string comment 'ACCT_MONTH',  
+DAY_ID          string comment 'DAY_ID',      
+XCOUNTY_ID      string comment 'XCOUNTY_ID',  
+XCOUNTY_NAME    string comment 'XCOUNTY_NAME',
+AREAID          string comment 'AREAID'       
+      
+)
+COMMENT ''
+PARTITIONED BY (MONTH_PART STRING COMMENT '月份分区',
+DAY_PART STRING COMMENT '日期分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;

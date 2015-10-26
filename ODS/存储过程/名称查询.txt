@@ -1,0 +1,29 @@
+1.P_ODS_BUS_CAMPAIGN_FEEDBACK_D       营业域
+2.P_ODS_BUS_MAINTENANCE_RTN_D         营业域
+3.P_ODS_BUS_ORDER_RES_RELA_D          营业域
+4.P_ODS_BUS_SERVICE_CIRCUIT_D         营业域
+5.P_ODS_BUS_SO_SERVICE_ORDER_D        营业域
+6.P_ODS_CDR_OCS_SMS_D                 详单域
+7.P_ODS_CDR_OCS_VAS_D                 详单域
+8.P_ODS_CHL_PAY_TRANSACTION_D         渠道域
+
+9.P_ODS_CHL_ZB_AGENT_DEV_AREA_M       渠道域       
+
+
+10.P_ODS_CUS_UCS_GROUP_D              客户域
+11.P_ODS_PRD_LARGE_TEXT_RECORD_D      产品域
+12.P_ODS_PRD_PM_SCHEME_LABEL_D        产品域
+13.P_ODS_PUB_ADDR_D                   公共域
+14.P_ODS_RES_NUMBER_ORDER_D           资源域      (重新做)
+
+15.P_ODS_USR_CBSS_B2CUSER_D           用户域    
+
+16.P_ODS_USR_GRP_SUBS_IND_REL_D       用户域
+17.P_ODS_USR_INSTANCE_EXTEND_D        用户域
+18.P_ODS_USR_UCS_SUBS_OBJECT_D        用户域
+19.P_ODS_USR_UCS_SUBS_RELA_D          用户域
+
+20.P_ODS_BUS_EXPBILL_RENT_D           营业域   （有问题）   (没有SRC.EXPBILL_RENT这张表)
+
+21.P_ODS_PUB_TRAFFIC_D                公共域    （有问题） （没有SRC.SH_TRAFFIC_TRANSFER这张表）
+22.P_ODS_BMS_GROUP_CERT_INFO_D        其它域    (域名有问题)

@@ -1,0 +1,806 @@
+1.   NODS.ODS_BIL_DISCOUNT_4G_M 
+
+hive  -e  "
+use ods;
+create table  ODS_BIL_DISCOUNT_4G_M  
+(
+      ACCT_MONTH   string   comment   '统计账期',    
+      SUBSCRIPTION_ID   string   comment   '用户编号',
+      SERVICE_NUM   string   comment   '号码',
+      DISCOUNT_FEE   decimal(20,3)   comment   '减收费',
+      OPERATE_TIME   string   comment   '操作时间',
+      SVC_TYPE   string   comment   '类型',
+      BILL_MONTH   string   comment   '账月',
+      PAR_VALUE   decimal(20,3)   comment   '原始面额',
+      STATUS   string   comment   '返销标志 1：返销'
+      )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:账务域,DATASUB_FIELD:ODS_BIL_DISCOUNT_4G_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+2.   NODS.ODS_BIL_ONE_OFF_FEE_PAID_M    
+
+hive  -e  "
+use ods;
+create table  ODS_BIL_ONE_OFF_FEE_PAID_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      SERIAL_CODE   string   comment   'SERIAL_CODE',
+      BMS_ACCEPT_ID   string   comment   'BMS_ACCEPT_ID',
+      CYCLE_MONTH   string   comment   'CYCLE_MONTH',
+      ACCOUNT_ID   string   comment   'ACCOUNT_ID',
+      SUBSCRIPTION_ID   string   comment   'SUBSCRIPTION_ID',
+      SVC_TYPE   string   comment   'SVC_TYPE',
+      SUBJECT_ID   string   comment   'SUBJECT_ID',
+      TRANS_FEE   decimal(20,3)   comment   'TRANS_FEE',
+      RELE_FLAG   string   comment   'RELE_FLAG',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      REGION_ID   string   comment   'REGION_ID',
+      OPERATOR_ID   string   comment   'OPERATOR_ID',
+      OFFICE_ID   string   comment   'OFFICE_ID',
+      COUNTY_ID   string   comment   'COUNTY_ID',
+      OP_REGION_ID   string   comment   'OP_REGION_ID',
+      REMARK   string   comment   'REMARK'
+           )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:账务域,DATASUB_FIELD:ODS_BIL_ONE_OFF_FEE_PAID_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+3.   NODS.ODS_BIL_PRINVOICE_INFO_M       
+
+
+hive  -e  "
+use ods;
+create table  ODS_BIL_PRINVOICE_INFO_M 
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      PROVINCE_ORDER_ID   string   comment   'PROVINCE_ORDER_ID',
+      TAXPAYER_CODE   string   comment   'TAXPAYER_CODE',
+      REGION_ID   string   comment   'REGION_ID',
+      CYCLE_MONTH_START   string   comment   'CYCLE_MONTH_START',
+      CYCLE_MONTH_END   string   comment   'CYCLE_MONTH_END',
+      SOURCE_TYPE   string   comment   'SOURCE_TYPE',
+      OFFICE_ID   string   comment   'OFFICE_ID',
+      INVOICE_ITEM_LIST   string   comment   'INVOICE_ITEM_LIST',
+      TOTAL_FEE   string   comment   'TOTAL_FEE',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      ORDER_ID   string   comment   'ORDER_ID',
+      HTTP_RESULT   string   comment   'HTTP_RESULT',
+      RECE_FEE_NAME   string   comment   'RECE_FEE_NAME',
+      EXTRA_INFO1   string   comment   'EXTRA_INFO1',
+      EXTRA_INFO2   string   comment   'EXTRA_INFO2',
+      EXTRA_INFO3   string   comment   'EXTRA_INFO3',
+      PRT_ORDER_ID   string   comment   'PRT_ORDER_ID',
+      DEPART_NAME   string   comment   'DEPART_NAME',
+      USER_ID   string   comment   'USER_ID',
+      ACCOUNT_ID   string   comment   'ACCOUNT_ID',
+      OPERATOR_ID   string   comment   'OPERATOR_ID'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:账务域,DATASUB_FIELD:ODS_BIL_PRINVOICE_INFO_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+4.    NODS.ODS_CDR_BGDT_G_M      (有timestamp字段，改成timestamps)
+
+
+hive  -e  "
+use ods;
+create table  ODS_CDR_BGDT_G_M 
+(
+
+      ACCT_MONTH   string   comment   '账期',
+      SYS_SVC_TYPE   string   comment   '业务类型',
+      SEQ_NO   string   comment   '序列号',
+      TIME   string   comment   '时间戳',
+      MESSAGE_ID   string   comment   '消息id',
+      SP_ID   string   comment   'Spid',
+      SERVICE_ID   string   comment   '业务id',
+      CP_ID   string   comment   'Cpid',
+      CONTENT_ID   string   comment   '"计费类型0：不计费,1：免费,2：按次计费,3：包月收取,4:按变量计费,"',
+      ACCESS_NO   string   comment   '接入号码',
+      SERVICE_TYPE   string   comment   '业务种类',
+      SOURCEDEVICE_TYPE   string   comment   'SOURCEDEVICE_TYPE',
+      SOURCEDEVICE_ID   string   comment   'SOURCEDEVICE_ID',
+      CDR_TYPE   string   comment   '话单类型',
+      PRODUCT_ID   string   comment   '使用费资费产品id（已经废掉了）',
+      SPC_PRODUCT_ID   string   comment   '使用费资费产品id（相当于PRODUCT_ID）',
+      SP_PRODUCT_ID   string   comment   '租费产品id （相当于PRM_ProductID）也就是用户的主套餐产品编号',
+      ORDER_METHOD   string   comment   'ORDER_METHOD',
+      PUSH_ID   string   comment   '计价单位类型，当ChargeType=4是有效。1：栅格数2：属性数3：栅格·属性·次4：用户数',
+      OAMDN   string   comment   '计费号码',
+      DAMDN   string   comment   '计费号码',
+      FAMDN   string   comment   '计费号码',
+      USER_TYPE   string   comment   '用户类型',
+      START_TIME   string   comment   '始话时间',
+      END_TIME   string   comment   '截止时间',
+      TIME_SEC   string   comment   '计价单位数量，当ChargeType=4是有效。本次消费产生的计价单位数量',
+      INPUT_OCTETS   decimal(20,3)   comment   'INPUT_OCTETS',
+      OUTPUT_OCTETS   decimal(20,3)   comment   'OUTPUT_OCTETS',
+      FEE_POINT   string   comment   'FEE_POINT',
+      BILL_TYPE   string   comment   'BILL_TYPE',
+      IFEE1   decimal(20,3)   comment   '信息费一批金额',
+      RESV1   string   comment   'RESV1',
+      RESV2   string   comment   'RESV2',
+      ISRATE   string   comment   '7代表不需要二批',
+      IMSI   string   comment   'IMSI',
+      FILE_TYPE   string   comment   '文件类型',
+      FILE_NO   string   comment   '文件标识',
+      VNUMBER   decimal(20,3)   comment   'VNUMBER',
+      SVC_NAME   string   comment   'SVC_NAME',
+      SUBSCRIPTION_ID   string   comment   '用户标识',
+      SERVICE_NUMR   string   comment   '计费号码',
+      ACCOUNT_ID   string   comment   '账户标识',
+      PART_ID   string   comment   '分区标识',
+      SVC_TYPE   string   comment   '用户业务大类',
+      REGION_ID   string   comment   '地区标识',
+      USAGE_CASE   string   comment   'USAGE_CASE',
+      USAGE_TYPE   string   comment   'USAGE_TYPE',
+      USAGE_CLASS   string   comment   'USAGE_CLASS',
+      CLASS_OF_SERVICE_CODE   string   comment   'CLASS_OF_SERVICE_CODE',
+      CFEE   decimal(20,3)   comment   'CFEE',
+      LFEE   decimal(20,3)   comment   'LFEE',
+      IFEE   decimal(20,3)   comment   '二批信息费金额',
+      MFEE   decimal(20,3)   comment   'MFEE',
+      TFEE   decimal(20,3)   comment   'TFEE',
+      DIS_CFEE   decimal(20,3)   comment   'DIS_CFEE',
+      DIS_LFEE   decimal(20,3)   comment   'DIS_LFEE',
+      DIS_IFEE   decimal(20,3)   comment   'DIS_IFEE',
+      CFEE_TIMES   decimal(20,3)   comment   'CFEE_TIMES',
+      LFEE_TIMES   decimal(20,3)   comment   'LFEE_TIMES',
+      IFEE_TIMES   decimal(20,3)   comment   'IFEE_TIMES',
+      MFEE_TIMES   decimal(20,3)   comment   'MFEE_TIMES',
+      TFEE_TIMES   decimal(20,3)   comment   'TFEE_TIMES',
+      CFEE_SUBJECT   string   comment   'CFEE_SUBJECT',
+      LFEE_SUBJECT   string   comment   'LFEE_SUBJECT',
+      IFEE_SUBJECT   string   comment   '二批信息费科目',
+      MFEE_SUBJECT   string   comment   'MFEE_SUBJECT',
+      TFEE_SUBJECT   string   comment   'TFEE_SUBJECT',
+      PACKAGE_ID   string   comment   'PACKAGE_ID',
+      PRODUCT_CLASS   string   comment   'PRODUCT_CLASS',
+      ORIGINAL_FILE   string   comment   '原始文件名',
+      LATE_LINK   string   comment   'LATE_LINK',
+      CAL_TIME   string   comment   '批价时间',
+      AUDI_STR   string   comment   '优惠批价轨迹',
+      VARIAN_STR   string   comment   '免费量优惠轨迹',
+      RERATE_CNT   string   comment   '重批标识',
+      TIMESTAMPS   string   comment   '入库时间'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:详单域,DATASUB_FIELD:ODS_CDR_BGDT_G_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+5.    NODS.ODS_CDR_GUPA_M       
+
+
+hive  -e  "
+use ods;
+create table  ODS_CDR_GUPA_M  
+(
+
+      ACCT_MONTH   string   comment   '统计月份',
+      FILE_TYPE   string   comment   'FILE_TYPE',
+      FILE_SN   string   comment   'FILE_SN',
+      RECORD_TYPE   string   comment   '漫入类型',
+      CDR_FEE_CODE   string   comment   'CDR_FEE_CODE',
+      VISIT_AREA_CODE   string   comment   '访问区域',
+      VISIT_LOCAL_NET   string   comment   'VISIT_LOCAL_NET',
+      ORG_TRM_ID   string   comment   '主被叫',
+      SELF_NUMBER   string   comment   '本方号码',
+      SELF_AREA_CODE   string   comment   '本方区域',
+      SELF_LOCAL_NET   string   comment   '本地网络',
+      SELF_BUSI_DISTRICT   string   comment   'SELF_BUSI_DISTRICT',
+      SELF_USER_TYPE   string   comment   '本方用户类型',
+      SELF_SERVICE_CLASS   string   comment   'SELF_SERVICE_CLASS',
+      SELF_REGION_CODE   string   comment   '本方代码',
+      NET_TYPE   string   comment   '网络类型',
+      CALL_TYPE   string   comment   '通话类型',
+      OPP_NUMBER   string   comment   '对方号码',
+      OPP_NUMBER_SUFFIX   string   comment   '对方号码前缀',
+      OPP_AREA_CODE   string   comment   '对方区域',
+      OPP_LOCAL_NET   string   comment   '对方网络',
+      OPP_BUSI_DISTRICT   string   comment   'OPP_BUSI_DISTRICT',
+      OPP_NUMBER_TYPE   string   comment   '对方号码类型',
+      OPP_DEALER_CODE   string   comment   '对方运营商',
+      OPP_SERVICE_CLASS   string   comment   '对方服务类型',
+      OPP_REGION_CODE   string   comment   '对方所属区域',
+      SERVICE_CODE   string   comment   '业务类型',
+      CHARGE_DATE   string   comment   '通话时间',
+      CHARGE_TIME   string   comment   '通话时段',
+      CALL_DURATION   int   comment   '通话时长',
+      SELF_MSC_ID   string   comment   'SELF_MSC_ID',
+      SELF_LAC_ID   string   comment   'SELF_LAC_ID',
+      SELF_CELL_ID   string   comment   'SELF_CELL_ID',
+      OPP_MSC_ID   string   comment   'OPP_MSC_ID',
+      OPP_LAC_ID   string   comment   'OPP_LAC_ID',
+      OPP_CELL_ID   string   comment   'OPP_CELL_ID',
+      IN_TRUNK   string   comment   'IN_TRUNK',
+      OUT_TRUNK   string   comment   'OUT_TRUNK',
+      TRUNK_TYPE   string   comment   'TRUNK_TYPE',
+      BASE   decimal(20,3)   comment   '基本费',
+      LAND   decimal(20,3)   comment   '长途费',
+      SS   decimal(20,3)   comment   'SS',
+      OTHER   decimal(20,3)   comment   'OTHER',
+      BASE_TIMES   decimal(20,3)   comment   '基本计费时长',
+      LAND_TIMES   decimal(20,3)   comment   '长途计费时长',
+      SS_TIMES   decimal(20,3)   comment   'SS_TIMES',
+      OTHER_TIMES   decimal(20,3)   comment   'OTHER_TIMES',
+      PAY_FLAG   string   comment   '付费标志',
+      TELE_SERVICE   string   comment   'TELE_SERVICE',
+      BEARER_SERVICE   string   comment   'BEARER_SERVICE',
+      SS_CODE   string   comment   'SS_CODE',
+      IMSI   string   comment   'IMSI',
+      THIRD_NUMBER   string   comment   'THIRD_NUMBER',
+      MSRN   string   comment   'MSRN',
+      BOUNDARY_CELL_FLAG   string   comment   'BOUNDARY_CELL_FLAG',
+      SAME_CITY_FLAG   string   comment   'SAME_CITY_FLAG',
+      CARD_NO   string   comment   'CARD_NO',
+      FILE_NAME   string   comment   'FILE_NAME',
+      RESERVE   string   comment   'RESERVE',
+      INSERT_DATE   string   comment   '经分数据入库时间',
+      SYS_TYPE   string   comment   '漫入用户使用2G/3G网络',
+      SPEED   string   comment   'SPEED',
+      HOT_BILLING   string   comment   'HOT_BILLING'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:详单域,DATASUB_FIELD:月漫入详单表]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+6.   NODS.ODS_CDR_ROAM_GPRS_M          
+
+
+hive  -e  "
+use ods;
+create table  ODS_CDR_ROAM_GPRS_M 
+(
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      DAY_ID   string   comment   'DAY_ID',
+      BILL_MONTH   string   comment   'BILL_MONTH',
+      SVC_TYPE   string   comment   'SVC_TYPE',
+      SUBSCRIPTION_ID   string   comment   'SUBSCRIPTION_ID',
+      MDN   string   comment   'MDN',
+      OCT   decimal(20,3)   comment   'OCT'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:详单域,DATASUB_FIELD:ODS_CDR_ROAM_GPRS_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+7.    NODS.ODS_CHL_AGENT_DIS_M          
+
+hive  -e  "
+use ods;
+create table  ODS_CHL_AGENT_DIS_M  
+(
+
+      ACCT_MONTH   string   comment   '按账期抽取，而不是自然月',
+      SUBSCRIPTION_ID   string   comment   'SUBSCRIPTION_ID',
+      SERVICE_NUM   string   comment   'SERVICE_NUM',
+      DISCOUNT_FEE   decimal(20,3)   comment   'DISCOUNT_FEE',
+      OPERATE_TIME   string   comment   'OPERATE_TIME',
+      SVC_TYPE   string   comment   'SVC_TYPE',
+      INSERT_TIME   string   comment   '从B侧抽取时间',
+      FLAG   string   comment   'FLAG',
+      ACTIVATED_MONTH   string   comment   'ACTIVATED_MONTH',
+      PAR_VALUE   decimal(20,3)   comment   'PAR_VALUE'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:渠道域,DATASUB_FIELD:ODS_CHL_AGENT_DIS_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+8.   NODS.ODS_CHL_CIM_COMM_FOR_BAS_M  
+
+hive  -e  "
+use ods;
+create table  ODS_CHL_CIM_COMM_FOR_BAS_M
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      COMM_SN   string   comment   'COMM_SN',
+      PAYCYCLE   string   comment   'PAYCYCLE',
+      BILLINGCYCLID   string   comment   'BILLINGCYCLID',
+      SUBSCRBID   string   comment   'SUBSCRBID',
+      SVCNUM   string   comment   'SVCNUM',
+      SVCID   string   comment   'SVCID',
+      TOTALFEE   decimal(20,3)   comment   'TOTALFEE',
+      ARREARFEE   decimal(20,3)   comment   'ARREARFEE',
+      COMMFEE   decimal(20,3)   comment   'COMMFEE',
+      COMMITEM   string   comment   'COMMITEM',
+      FEE   decimal(20,3)   comment   'FEE',
+      FEETYPE   string   comment   'FEETYPE',
+      MODID   string   comment   'MODID',
+      RULEID   string   comment   'RULEID',
+      DEALPROCESS   string   comment   'DEALPROCESS',
+      AGENTID   string   comment   'AGENTID',
+      VPNID   string   comment   'VPNID',
+      ERRORCODE   string   comment   'ERRORCODE',
+      REMARK   string   comment   'REMARK',
+      OPTYPE   string   comment   'OPTYPE',
+      COUNTYID   string   comment   'COUNTYID',
+      AREAID   string   comment   'AREAID',
+      OPENCYCLE   string   comment   'OPENCYCLE',
+      SETT_TYPE   string   comment   'SETT_TYPE',
+      COMM_TYPE   string   comment   'COMM_TYPE',
+      FRZ_SN   string   comment   'FRZ_SN',
+      CREATE_DATE   string   comment   'CREATE_DATE',
+      DEPT_ID   string   comment   'DEPT_ID',
+      COMM_SRC   string   comment   'COMM_SRC',
+      SUBJECTID   string   comment   'SUBJECTID',
+      AUDITOR_1   string   comment   'AUDITOR_1',
+      AUDIT_TIME_1   string   comment   'AUDIT_TIME_1',
+      AUDITOR_2   string   comment   'AUDITOR_2',
+      AUDIT_TIME_2   string   comment   'AUDIT_TIME_2',
+      AUDITOR_3   string   comment   'AUDITOR_3',
+      AUDIT_TIME_3   string   comment   'AUDIT_TIME_3',
+      BASICNUM   string   comment   'BASICNUM',
+      AGENTNO   string   comment   'AGENTNO',
+      AGENTNAME   string   comment   'AGENTNAME',
+      CUSTNAME   string   comment   'CUSTNAME',
+      ACCTID   string   comment   'ACCTID',
+      SVCTP   string   comment   'SVCTP',
+      MAIN_PRCPLNID   string   comment   'MAIN_PRCPLNID',
+      USERGRP   string   comment   'USERGRP',
+      USERGRP2   string   comment   'USERGRP2',
+      USERTYPE   string   comment   'USERTYPE',
+      USERTYPE2   string   comment   'USERTYPE2',
+      SETT_SN   string   comment   'SETT_SN',
+      OPENDATE   string   comment   'OPENDATE',
+      CLOSEDATE   string   comment   'CLOSEDATE',
+      BRAND_ID   string   comment   'BRAND_ID',
+      SUB_BRAND_ID   string   comment   'SUB_BRAND_ID',
+      AUDIT_SN   string   comment   'AUDIT_SN',
+      PAY_ID   string   comment   'PAY_ID',
+      CHANNEL_NAME   string   comment   'CHANNEL_NAME',
+      MOD_NAME   string   comment   'MOD_NAME',
+      QUANTITY   string   comment   'QUANTITY',
+      KEY_SOURCE_TYPE_CD   string   comment   'KEY_SOURCE_TYPE_CD',
+      PRODUCT_KIND_ID   string   comment   'PRODUCT_KIND_ID',
+      LOCATION_ID   string   comment   'LOCATION_ID',
+      CONTRACT_ID   string   comment   'CONTRACT_ID'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:渠道域,DATASUB_FIELD:ODS_CHL_CIM_COMM_FOR_BAS_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+9.   NODS.ODS_CHL_ZB_AI_MOD_CONFIG_M       
+
+
+hive  -e  "
+use ods;
+create table  ODS_CHL_ZB_AI_MOD_CONFIG_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      MOD_ID   string   comment   'MOD_ID',
+      MOD_LOCAL_CODE   string   comment   'MOD_LOCAL_CODE',
+      EDITION_ID   string   comment   'EDITION_ID',
+      MOD_FILE_ID   string   comment   'MOD_FILE_ID',
+      MOD_NAME   string   comment   'MOD_NAME',
+      EFF_DATE   string   comment   'EFF_DATE',
+      EXP_DATE   string   comment   'EXP_DATE',
+      STATE   string   comment   'STATE',
+      COMM_OBJ_TYPE   string   comment   'COMM_OBJ_TYPE',
+      PAY_CHNL_ID   string   comment   'PAY_CHNL_ID',
+      OPERATION_OBJ_TYPE   string   comment   'OPERATION_OBJ_TYPE',
+      MOD_TYPE   string   comment   'MOD_TYPE',
+      COMM_TYPE   string   comment   'COMM_TYPE',
+      DEPT_ID   string   comment   'DEPT_ID',
+      COMMENTS   string   comment   'COMMENTS',
+      IS_MODEL   string   comment   'IS_MODEL',
+      MODEL_SCOPE   string   comment   'MODEL_SCOPE',
+      MODEL_MOD_ID   string   comment   'MODEL_MOD_ID',
+      CAL_START_TIME_UNIT   string   comment   'CAL_START_TIME_UNIT',
+      CAL_START_TIME   string   comment   'CAL_START_TIME',
+      MOD_LEVEL   string   comment   'MOD_LEVEL',
+      BATCH_NO   string   comment   'BATCH_NO',
+      PROVINCE_CODE   string   comment   'PROVINCE_CODE',
+      CITY_CODE   string   comment   'CITY_CODE',
+      CREATE_STAFF_ID   string   comment   'CREATE_STAFF_ID',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      UPDATE_STAFF_ID   string   comment   'UPDATE_STAFF_ID',
+      UPDATE_TIME   string   comment   'UPDATE_TIME',
+      BUSI_LIMIT_MONTH   string   comment   'BUSI_LIMIT_MONTH'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:渠道域,DATASUB_FIELD:ODS_CHL_ZB_AI_MOD_CONFIG_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+10.   NODS.ODS_CUS_TCT_YEAR_RESET_M    
+
+hive  -e  "
+use ods;
+create table  ODS_CUS_TCT_YEAR_RESET_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      USER_NO   string   comment   'USER_NO',
+      YEAR   string   comment   'YEAR',
+      CREDIT_VALUE   decimal(20,3)   comment   'CREDIT_VALUE',
+      OPERATE_DATE   string   comment   'OPERATE_DATE',
+      IS_RESTORE   string   comment   'IS_RESTORE',
+      CALCULATE_MONTH   string   comment   'CALCULATE_MONTH'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:客户域,DATASUB_FIELD:ODS_CUS_TCT_YEAR_RESET_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+11.     NODS.ODS_MRT_T_TZ_M         
+
+
+hive  -e  "
+use ods;
+create table  ODS_MRT_T_TZ_M   
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      SVCNUM   string   comment   'SVCNUM',
+      FLAG   string   comment   'FLAG',
+      INSERT_TIME   string   comment   'INSERT_TIME',
+      MO_CONFIG   string   comment   'MO_CONFIG',
+      CLUB_NAME   string   comment   'CLUB_NAME',
+      MO_ID   string   comment   'MO_ID',
+      ACTIVITY_ID   string   comment   'ACTIVITY_ID',
+      DELIVER_ID   string   comment   'DELIVER_ID',
+      RETURN_MSG   string   comment   'RETURN_MSG',
+      TZ_ID   string   comment   'TZ_ID',
+      STATUS   string   comment   'STATUS',
+      TZ_STATUS   string   comment   'TZ_STATUS',
+      SUBSCRBID   string   comment   'SUBSCRBID',
+      UPDATE_TIME   string   comment   'UPDATE_TIME',
+      UPDATOR   string   comment   'UPDATOR'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:市场营销域,DATASUB_FIELD:ODS_MRT_T_TZ_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+12.    NODS.ODS_M_U_BI_INF_CONT_M      
+
+
+hive  -e  "
+use ods;
+create table  ODS_M_U_BI_INF_CONT_M  
+(
+
+      ACCT_MONTH   string   comment   '统计账期',
+      USER_NO   string   comment   '用户编号',
+      DEVICE_NUMBER   string   comment   '用户号码',
+      QUERY_LAB   string   comment   '"当月查询接触次数分档 0: 当月查询接触次数0次
+1: 当月查询接触次数1-4次
+5: 当月查询接触次数5-19次
+20: 当月查询接触次数20次以上
+"',
+      CONSULT_LAB   string   comment   '当月咨询接触次数分档  同上',
+      BUSINESS_LAB   string   comment   '当月业务办理接触次数分档  同上',
+      TROUBLE_LAB   string   comment   '当月故障申告接触次数分档 同上',
+      COMPLAINT_LAB   string   comment   '当月投诉接触次数分档 同上',
+      OTHER_LAB   string   comment   '当月其他接触次数分档 同上',
+      THR_QUERY_LAB   string   comment   '近3月查询接触次数分档 同上',
+      THR_CONSULT_LAB   string   comment   '近3月咨询接触次数分档 同上',
+      THR_BUSINESS_LAB   string   comment   '近3月业务办理接触次数分档 同上',
+      THR_TROUBLE_LAB   string   comment   '近3月故障申告接触次数分档 同上',
+      THR_COMPLAINT_LAB   string   comment   '近3月投诉接触次数分档 同上',
+      THR_OTHER_LAB   string   comment   '近3月其他接触次数分档 同上',
+      SIX_QUERY_LAB   string   comment   '近6月查询接触次数分档 同上',
+      SIX_CONSULT_LAB   string   comment   '近6月咨询接触次数分档 同上',
+      SIX_BUSINESS_LAB   string   comment   '近6月业务办理接触次数分档 同上',
+      SIX_TROUBLE_LAB   string   comment   '近6月故障申告接触次数分档 同上',
+      SIX_COMPLAINT_LAB   string   comment   '近6月投诉接触次数分档 同上',
+      SIX_OTHER_LAB   string   comment   '近6月其他接触次数分档 同上 ',
+      YEAR_QUERY_LAB   string   comment   '近1年查询接触次数分档 同上',
+      YEAR_CONSULT_LAB   string   comment   '近1年咨询接触次数分档 同上',
+      YEAR_BUSINESS_LAB   string   comment   '近1年业务办理接触次数分档 同上',
+      YEAR_TROUBLE_LAB   string   comment   '近1年故障申告接触次数分档 同上',
+      YEAR_COMPLAINT_LAB   string   comment   '近1年投诉接触次数分档 同上',
+      YEAR_OTHER_LAB   string   comment   '近1年其他接触次数分档 同上',
+      INSERT_DATE   string   comment   'INSERT_DATE'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:其它域,DATASUB_FIELD:ODS_M_U_BI_INF_CONT_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+
+13.    NODS.ODS_PUB_MAT_DELIVER_INFO_M        
+
+
+hive  -e  "
+use ods;
+create table  ODS_PUB_MAT_DELIVER_INFO_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      UNIQU_DELIVER_ID   string   comment   'UNIQU_DELIVER_ID',
+      BARCODE   string   comment   'BARCODE',
+      BATCH_ID   string   comment   'BATCH_ID',
+      STATUS   string   comment   'STATUS',
+      REFUSE_REASON   string   comment   'REFUSE_REASON',
+      AREA_ID   string   comment   'AREA_ID',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      SCANNER   string   comment   'SCANNER',
+      CHECK_DATE   string   comment   'CHECK_DATE',
+      CHECKER   string   comment   'CHECKER',
+      DRAW_DEADLINE   string   comment   'DRAW_DEADLINE',
+      RESUBMIT_DATE   string   comment   'RESUBMIT_DATE',
+      REMARK   string   comment   'REMARK',
+      REFUSE_TYPE   string   comment   'REFUSE_TYPE',
+      SCAN_DATE   string   comment   'SCAN_DATE',
+      ARCHIVE_CODE   string   comment   'ARCHIVE_CODE',
+      INFORMATION_ATTRIBUTE   string   comment   'INFORMATION_ATTRIBUTE',
+      ARCHIVE_OPERATOR   string   comment   'ARCHIVE_OPERATOR',
+      ARCHIVE_DATE   string   comment   'ARCHIVE_DATE',
+      REVIEW_OPERATOR   string   comment   'REVIEW_OPERATOR',
+      REVIEW_DATE   string   comment   'REVIEW_DATE',
+      TRIM_OPERATOR   string   comment   'TRIM_OPERATOR',
+      TRIM_DATE   string   comment   'TRIM_DATE',
+      SYSTEM   string   comment   'SYSTEM',
+      COUNTY_ID   string   comment   'COUNTY_ID',
+      LABEL_TYPE   string   comment   'LABEL_TYPE'
+            )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:公共域,DATASUB_FIELD:ODS_PUB_MAT_DELIVER_INFO_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+
+14.    NODS.ODS_RES_EVENHAND_CHARGE_4G_M       
+
+hive  -e  "
+use ods;
+create table  ODS_RES_EVENHAND_CHARGE_4G_M  
+(
+
+      ACCT_MONTH   string   comment   '月份',
+      PROVINCE_NO   string   comment   '省份',
+      AREA_NO   string   comment   '地市',
+      CITY_NO   string   comment   '区县',
+      CHANNEL_NO   string   comment   '渠道编码',
+      AGENT_NAME   string   comment   '代理商',
+      IS_GROUP   string   comment   '集团客户标识',
+      GROUP_TYPE   string   comment   '集团应用类别',
+      GROUP_NAME   string   comment   '集团客户名称',
+      GROUP_ID   string   comment   '集团ID',
+      GROUP_LEVEL   string   comment   '集团级别',
+      OPERATOR_ID   string   comment   '操作员工号',
+      OPERATOR_NAME   string   comment   '操作员姓名',
+      CHANNEL_TYPE   string   comment   '渠道类型',
+      ORDER_ID   string   comment   '订单标识',
+      FANXIAO_ORDER   string   comment   '返销订单',
+      SERVICE_NUMBER   string   comment   '服务号码',
+      TELE_TYPE   string   comment   '业务类型',
+      TELE_SUBTYPE   string   comment   '业务子类型',
+      SUBS_TYPE   string   comment   '订单类型',
+      SUBS_STATUS   string   comment   '订单状态',
+      USER_NAME   string   comment   '用户名称',
+      CERT_ID   string   comment   '证件号码',
+      EXPENSES_AMOUNT   decimal(20,3)   comment   '营业受理金额',
+      DEPOSIT_AMOUNT   decimal(20,3)   comment   '押金金额',
+      TOSAVE_AMOUNT   decimal(20,3)   comment   '预存金额',
+      COMPLETED_TIME   string   comment   '竣工时间',
+      RECEIVABLE_AMOUNT   decimal(20,3)   comment   '应收金额',
+      SOLID_AMOUNT   decimal(20,3)   comment   '实收金额',
+      REDUCTION_COST   decimal(20,3)   comment   '减免费用',
+      PAY_SIGN   string   comment   '预付费标志',
+      FIRST_PATTERN   string   comment   '首账单模式',
+      GUARANTEE_TYPE   string   comment   '担保类型',
+      PROTO_ID   string   comment   '协议编码',
+      ORG_NAME   string   comment   '单位名称',
+      CREDIT_NAME   string   comment   '信贷模式名称',
+      AGREEMENT_RATE   string   comment   '协议费率',
+      PRODUCT_ID   string   comment   '主产品套餐编码',
+      PRODUCT_NAME   string   comment   '主产品套餐名称',
+      ACTIVITIES_CODE   string   comment   '活动编码',
+      ACTIVITIES_NAME   string   comment   '活动名称',
+      USIM_ID   string   comment   'USIM号',
+      TERMINAL_ID   string   comment   '终端串号',
+      HJYS_ID   string   comment   '换机原损串号',
+      TERMINAL_TYPE   string   comment   '终端类型',
+      TERMINAL_BRAND_ID   string   comment   '终端品牌编码',
+      TERMINAL_BRAND_NAME   string   comment   '终端品牌名称',
+      TERMINAL_TYPE_ID   string   comment   '终端型号编码',
+      TERMINAL_TYPE_NAME   string   comment   '终端型号名称',
+      TERMINAL_MODEL_ID   string   comment   '终端机型编码',
+      TERMINAL_MODEL   string   comment   '终端机型',
+      REPLENISHMENT_SIGN   string   comment   '铺货标志',
+      ACTIVITIES_SUBSIDIES   decimal(20,3)   comment   '活动终端补贴',
+      ACTIVITIES_PHONE   decimal(20,3)   comment   '活动预存话费',
+      TERMINAL_PARAGRAPH   decimal(20,3)   comment   '终端款',
+      TERMINAL_PRICE   decimal(20,3)   comment   '成本价',
+      MARKET_RETAIL   decimal(20,3)   comment   '市场零售价',
+      LINE_LONG   string   comment   '活动协议期限',
+      GDS_ID   string   comment   '国代商编码',
+      GDS_NAME   string   comment   '国代商名称',
+      CREA_DATE   string   comment   '受理时间',
+      RECOMMEND_NAME   string   comment   '推荐人姓名',
+      RECOMMEND_ID   string   comment   '推荐人ID',
+      RECOMMEND_CODE   string   comment   '推荐人编码',
+      DEPARTMENT_CODE   string   comment   '推荐人部门编码',
+      DEPARTMENT_NAME   string   comment   '推荐人部门名称'
+                  )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:资源域,DATASUB_FIELD:4G终端成本]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+15.    NODS.ODS_RES_NUMBER_ORDER_M          
+
+
+hive  -e  "
+use ods;
+create table  ODS_RES_NUMBER_ORDER_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      ORDER_UNIQUE_ID   string   comment   'ORDER_UNIQUE_ID',
+      SVC_NUMBER   string   comment   'SVC_NUMBER',
+      NUMBER_STATUS   string   comment   'NUMBER_STATUS',
+      BMS_ACCEPT_ID   string   comment   'BMS_ACCEPT_ID',
+      ORDER_ID   string   comment   'ORDER_ID',
+      ORDER_CHANNEL   string   comment   'ORDER_CHANNEL',
+      ORDER_SEQ_ID   string   comment   'ORDER_SEQ_ID',
+      PRODUCT_ID   string   comment   'PRODUCT_ID',
+      MIN_FEE   decimal(20,3)   comment   'MIN_FEE',
+      ONNET_TIME   decimal(20,3)   comment   'ONNET_TIME',
+      DEPOSIT_FEE   decimal(20,3)   comment   'DEPOSIT_FEE',
+      REGION_ID   string   comment   'REGION_ID',
+      COUNTY_ID   string   comment   'COUNTY_ID',
+      OFFICE_ID   string   comment   'OFFICE_ID',
+      NUM_RULE   string   comment   'NUM_RULE',
+      USER_NAME   string   comment   'USER_NAME',
+      CERT_TYPE   string   comment   'CERT_TYPE',
+      CERT_NUM   string   comment   'CERT_NUM',
+      CONTACT_NUM   string   comment   'CONTACT_NUM',
+      ACTIVE_TIME   string   comment   'ACTIVE_TIME',
+      INACTIVE_TIME   string   comment   'INACTIVE_TIME',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      PROV_PRODUCT_ID   string   comment   'PROV_PRODUCT_ID',
+      SCHEME_ID   string   comment   'SCHEME_ID',
+      OLD_NUMBER_STATUS   string   comment   'OLD_NUMBER_STATUS',
+      RESERVED1   string   comment   'RESERVED1',
+      PROV_CODE   string   comment   'PROV_CODE',
+      CITY_CODE   string   comment   'CITY_CODE',
+      COUNTY_CODE   string   comment   'COUNTY_CODE',
+      SERVICE_STATUS_TYPE   string   comment   'SERVICE_STATUS_TYPE',
+      OPT_PRODUCT_ID   string   comment   'OPT_PRODUCT_ID',
+      OPT_PRODUCT_NAME   string   comment   'OPT_PRODUCT_NAME',
+      FIRST_MON_BILL_MODE   string   comment   'FIRST_MON_BILL_MODE'
+                  )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:资源域,DATASUB_FIELD:ODS_RES_NUMBER_ORDER_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+16.        NODS.ODS_RES_UCS_SUBS_MOBILE_M       
+
+
+hive  -e  "
+use ods;
+create table  ODS_RES_UCS_SUBS_MOBILE_M  
+(
+
+      ACCT_MONTH   string   comment   ' 账期',
+      SUBS_MOBILE_ID   string   comment   'SUBS_MOBILE_ID',
+      SUBS_SCHEME_ID   string   comment   '合约ID',
+      SUBSCRIPTION_ID   string   comment   ' 用户编号',
+      SERVICE_TYPE   string   comment   'SERVICE_TYPE',
+      MOBILE_ID   string   comment   'MOBILE_ID',
+      MOBILE_SELL_SERIAL   string   comment   'MOBILE_SELL_SERIAL',
+      MOBILE_ESN   string   comment   ' 手机ESN号',
+      MOBILE_SELL_PRICE   string   comment   'MOBILE_SELL_PRICE',
+      MOBILE_COST_PRICE   string   comment   'MOBILE_COST_PRICE',
+      MOBILE_MODEL   string   comment   'MOBILE_MODEL',
+      MOBILE_CHANNEL   string   comment   'MOBILE_CHANNEL',
+      MOBILE_COLOR   string   comment   'MOBILE_COLOR',
+      CREATE_TIME   string   comment   '创建时间',
+      ACTIVE_TIME   string   comment   ' 生效时间',
+      INACTIVE_TIME   string   comment   '失效时间',
+      REGION_ID   string   comment   'REGION_ID',
+      COUNTY_ID   string   comment   'COUNTY_ID',
+      OFFICE_ID   string   comment   'OFFICE_ID',
+      OPERATOR_ID   string   comment   ' 操作员ID',
+      MOBILE_RELE   string   comment   'MOBILE_RELE'
+                  )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:资源域,DATASUB_FIELD:月手机合约表]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+17.        NODS.ODS_USR_SUBS_PRE_ALL_M 
+
+
+hive  -e  "
+use ods;
+create table  ODS_USR_SUBS_PRE_ALL_M 
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      RESERVED2   string   comment   'RESERVED2',
+      BMS_ACCEPT_ID   string   comment   'BMS_ACCEPT_ID',
+      COUNTY_ID   string   comment   'COUNTY_ID',
+      OFFICE_ID   string   comment   'OFFICE_ID',
+      OPERATOR_ID   string   comment   'OPERATOR_ID',
+      CREATE_TIME   string   comment   'CREATE_TIME',
+      BUSI_ID   string   comment   'BUSI_ID'
+                  )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:用户域,DATASUB_FIELD:ODS_USR_SUBS_PRE_ALL_M]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"
+
+
+18.        NODS.ODS_USR_TELNUMBER_M       
+
+hive  -e  "
+use ods;
+create table  ODS_USR_TELNUMBER_M  
+(
+
+      ACCT_MONTH   string   comment   'ACCT_MONTH',
+      ID   string   comment   'ID',
+      AREA_CODE   string   comment   'AREA_CODE',
+      TELE_NUMBER   string   comment   'TELE_NUMBER',
+      TELE_NUMBER_HEAD_ID   string   comment   'TELE_NUMBER_HEAD_ID',
+      EXCH_ID   string   comment   'EXCH_ID',
+      TELE_NUMBER_TYPE_ID   string   comment   'TELE_NUMBER_TYPE_ID',
+      TELE_NUMBER_LEVEL_ID   string   comment   'TELE_NUMBER_LEVEL_ID',
+      PORT_ID   string   comment   'PORT_ID',
+      PRE_REUSE_NUMBER   int   comment   'PRE_REUSE_NUMBER',
+      REUSE_NUMBER   int   comment   'REUSE_NUMBER',
+      ORGANIZE_ID   string   comment   'ORGANIZE_ID',
+      CONT_STATE   string   comment   'CONT_STATE',
+      KEEP_STATE   string   comment   'KEEP_STATE',
+      STATE   string   comment   'STATE',
+      REMARKS   string   comment   'REMARKS',
+      DEL_FLAG   string   comment   'DEL_FLAG',
+      IS_LOCKED   string   comment   'IS_LOCKED',
+      KEEP_DATE   string   comment   'KEEP_DATE',
+      BUSINESS_TYPE   string   comment   'BUSINESS_TYPE',
+      BUSINESS_DETAIL_TYPE   string   comment   'BUSINESS_DETAIL_TYPE',
+      BUSINESS_AREA_ID   string   comment   'BUSINESS_AREA_ID'
+                  )
+comment '[MASTER_FIELD:B域,LEVEL:ODS层,DATA_FIELD:用户域,DATASUB_FIELD:ODS_USR_TELNUMBER_M ]'
+PARTITIONED BY (MONTH_PART STRING comment '月份分区')
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS RCFILE;
+"

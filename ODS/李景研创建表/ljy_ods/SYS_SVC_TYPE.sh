@@ -1,0 +1,15 @@
+hive -e "use src;
+CREATE TABLE SYS_SVC_TYPE(
+SVC_TYPE                   STRING,
+SVC_TYPE_NAME              STRING,
+NET_TYPE_CODE              STRING,
+NET_CLASS_CODE             STRING,
+CLASS_OF_SERVICE_CODE      STRING,
+SVC_CATA                   STRING,
+SERIALNO_TYPE              STRING,
+STAT_TYPE                  STRING,
+STAT_TYPE_DESC             STRING
+)
+COMMENT '³ÂºêÁ¢³Áµí±í'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\001' 
+STORED AS TEXTFILE;"

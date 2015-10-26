@@ -1,0 +1,36 @@
+#/bin/bash
+
+#业务逻辑输入参数，此处很重要，需要根据实际业务情况认真设定！！！！ 
+v_month=$1
+
+echo "
+insert overwrite table ODS.ODS_USR_TELNUMBER_M partition (month_part='$v_month') 
+    SELECT 
+'$v_month', 
+ID,
+AREA_CODE,
+TELE_NUMBER,
+TELE_NUMBER_HEAD_ID,
+EXCH_ID,
+TELE_NUMBER_TYPE_ID,
+TELE_NUMBER_LEVEL_ID,
+PORT_ID,
+PRE_REUSE_NUMBER,
+REUSE_NUMBER,
+ORGANIZE_ID,
+CONT_STATE,
+KEEP_STATE,
+STATE,
+REMARKS,
+DEL_FLAG,
+IS_LOCKED,
+KEEP_DATE,
+BUSINESS_TYPE,
+BUSINESS_DETAIL_TYPE,
+BUSINESS_AREA_ID
+FROM SRC.TELNUMBER;
+"
+
+
+
+
